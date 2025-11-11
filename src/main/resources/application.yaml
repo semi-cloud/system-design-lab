@@ -1,3 +1,7 @@
 spring:
   application:
     name: system
+
+url:
+  protocol: https
+  domain: test.kr
