@@ -22,19 +22,6 @@ public class UrlGenerator {
 
 	private final CustomUrlRepository urlRepository;
 
-	// version 1
-	// private UrlGenerator(){}
-	//
-	// private static final String PROTOCOL = "https";
-	// private static final String DOMAIN = "test.kr";
-
-	// version 2
-	// @Value("${url.protocol}")
-	// private String protocol;
-	//
-	// @Value("${url.protocol}")
-	// private String domain;
-
 	public String generate(String originUrl) {
 		String protocol = urlProperties.getProtocol();
 		String domain = urlProperties.getDomain();
@@ -46,9 +33,7 @@ public class UrlGenerator {
 			// 1. 해시값 생성 (seed를 붙여 중복 회피)
 			byte[] hashValue = generateHash(originUrl + retryCount);
 
-			// 2. 문자열로 인코딩 (URL safe Base64)
-			// url safe version -> 패딩에서 사용되는 + -> -, / -> _ 으로 변경됌
-			// Base64 VS Base16 인코딩 -> 최대한 줄인 상태에서 자르는게 더 안전하지 않을까? (+대문자 포함, 16진법은 대문자 X, 대소문자 여부에 따라서 선택하자.)
+			// 2. 문자열로 인코딩 (URL safe Base64) : url safe version -> 패딩에서 사용되는 + -> -, / -> _ 으로 변경됌
 			String hashString = Base64.encodeBase64URLSafeString(hashValue);
 			fixedHashString = hashString.substring(0, 6);
 
