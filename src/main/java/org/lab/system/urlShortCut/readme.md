@@ -55,7 +55,7 @@ ex) https://google.com/abcdefg/dfksjdlf -> https://ourserver.com/{hashValue}
 #### 문자열 인코딩 방식 선정
 
 1. URL-safe base64 인코딩 적용(택 O)
-   - 문자(URL에 안전한 문자) + 숫자, 8bit씩 자름
+   - 문자(URL에 안전한 문자) + 숫자, 6bit씩 자름
    - N글자 -> 가능한 경우의 수는 64^N 가지 : 충돌 가능성 낮음
    
 2. 16진법 적용(택 X)
